@@ -8,6 +8,8 @@ Feature: Test Application - Feature 1
     When I entered valid username and password
     Then home page displayed
 
+
 Scenario: verify username and password functionality with in valid data 
-    When I entered invalid username and password
-    Then popup message should be displayed
+  When I entered invalid username and password
+   Then popup message should be displayed
+    

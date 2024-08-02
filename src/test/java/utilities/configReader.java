@@ -22,10 +22,6 @@ public class configReader {
 
 	}
 
-	public static void loadConfig() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 	

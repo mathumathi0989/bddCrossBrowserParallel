@@ -17,7 +17,8 @@ import utilities.configReader;
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 	
-	@DataProvider(parallel = false)
+	@Override
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios(); }
 	

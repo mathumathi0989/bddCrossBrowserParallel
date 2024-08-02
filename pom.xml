@@ -54,32 +54,14 @@
 </dependencies>
 <build>
 	<plugins>
+		
+		
 		<plugin>
-        <groupId>com.github.temyers</groupId>
-        <artifactId>cucumber-jvm-parallel-plugin</artifactId>
-        <version>5.0.0</version>
-        <executions>
-          <execution>
-            <id>generateRunners</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>generateRunners</goal>
-            </goals>
-            <configuration>
-              <glue>stepDefinitions, hooks</glue>
-              <featuresDirectory>src/test/resources/features</featuresDirectory>
-              <outputDirectory>target/generated-test-sources/cucumber</outputDirectory>
-              <cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
-              <parallelScheme>SCENARIO</parallelScheme>
-              <strict>true</strict>
-              <monochrome>true</monochrome>
-              <tags>~@ignore</tags>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-		
-		
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.0</version>
+</plugin>
+
 	</plugins>
 	
 </build>

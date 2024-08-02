@@ -9,30 +9,33 @@ import utilities.driverFactory;
 
 public class hooks {
 
-	public static WebDriver driver;
-	
+
+	  // ThreadLocal for WebDriver instances
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    
 	@Before
 	public static void before() throws Throwable {
-	//	Loggerload.info("Loading Config file");
 
-		configReader.loadConfig();
 		String browser = configReader.getBrowserType();
 		 driverFactory driverFactory = new driverFactory();
-		 driver = driverFactory.initializeDrivers(browser);
-
-	//	Loggerload.info("Initializing driver for : "+browser);
-
-	
+		 driver.set(driverFactory.initializeDrivers(browser));
+		
 
 	}
 
 	 @After
 	    public void after() {
-	        if (driver != null) {
-	            driver.quit();
+		 WebDriver webDriver = driver.get();
+	        if (webDriver != null) {
+	            webDriver.quit(); 
+	            driver.remove();  // Remove the thread-local reference
 	        }
 	    }
 	 
+	// Method to get the WebDriver instance
+	    public static WebDriver getDriver() {
+	        return driver.get();
+	    }
 	
 	
 }
