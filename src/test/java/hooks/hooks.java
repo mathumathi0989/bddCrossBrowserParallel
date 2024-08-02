@@ -15,9 +15,11 @@ public class hooks {
     
 	@Before
 	public static void before() throws Throwable {
-
+		 // Get the browser type from configReader
 		String browser = configReader.getBrowserType();
+		 // Initialize driverFactory
 		 driverFactory driverFactory = new driverFactory();
+		  // Set the WebDriver instance in ThreadLocal
 		 driver.set(driverFactory.initializeDrivers(browser));
 		
 
@@ -25,10 +27,13 @@ public class hooks {
 
 	 @After
 	    public void after() {
+		 // Get the WebDriver instance from ThreadLocal
 		 WebDriver webDriver = driver.get();
 	        if (webDriver != null) {
+	        	   // Quit the WebDriver
 	            webDriver.quit(); 
-	            driver.remove();  // Remove the thread-local reference
+	            // Remove the thread-local reference
+	            driver.remove();  
 	        }
 	    }
 	 

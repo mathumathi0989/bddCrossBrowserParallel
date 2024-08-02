@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class driverFactory {
 
 	public WebDriver driver;
-	
+	 // Initialize WebDriver based on the browser type
 	@Parameters("browser")
 	public WebDriver initializeDrivers(String browser) {
 
@@ -30,6 +30,7 @@ public class driverFactory {
 	            WebDriverManager.edgedriver().setup();
 	            driver = new EdgeDriver();
 	        }
+		 // Set page load timeout and maximize window
 	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 	        driver.manage().window().maximize();
 	        

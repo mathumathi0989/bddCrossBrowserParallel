@@ -2,14 +2,16 @@ package utilities;
 
 public class configReader {
 
+	  // Store the browser type
 	private static String browserType = null;
 
+	 // Set the browser type
 	public static void setBrowserType(String browser) {
 
 		browserType = browser;
 
 	}
-
+	 // Get the browser type
 	public static String getBrowserType() throws Throwable {
 
 		if (browserType != null)
