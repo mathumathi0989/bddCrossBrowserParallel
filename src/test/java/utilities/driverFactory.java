@@ -1,0 +1,40 @@
+package utilities;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.Parameters;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class driverFactory {
+
+	public WebDriver driver;
+	
+	@Parameters("browser")
+	public WebDriver initializeDrivers(String browser) {
+
+		 if (browser.equalsIgnoreCase("firefox")) {
+	            WebDriverManager.firefoxdriver().setup();
+	            driver = new FirefoxDriver();
+	        } else if (browser.equalsIgnoreCase("chrome")) {
+	            WebDriverManager.chromiumdriver();	 
+	            driver = new ChromeDriver();
+	        } else if (browser.equalsIgnoreCase("safari")) {
+	            driver = new SafariDriver();
+	        } else if (browser.equalsIgnoreCase("edge")) {
+	            WebDriverManager.edgedriver().setup();
+	            driver = new EdgeDriver();
+	        }
+	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+	        driver.manage().window().maximize();
+	        
+	        return driver;
+
+	}
+	
+}
